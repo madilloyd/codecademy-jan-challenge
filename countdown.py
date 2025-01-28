@@ -47,7 +47,7 @@ while not stop_input:
         # Stop loop if event time met
         if time_difference.total_seconds() <= 0:
             print(f"\nTime for {event}!")
-            print("Thnak you for using countdown.py")
+            print("Thank you for using countdown.py")
             break
         
         # Extract days, hours, minutes, seconds
