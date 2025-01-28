@@ -1,6 +1,6 @@
 from datetime import datetime
-from datetime import timedelta
-from datetime import date
+import time
+
 # Get current time
 current_time = datetime.now()
 #print(current_time.strftime("%x %I:%M:%S %p"))
@@ -14,16 +14,27 @@ event_datetime = datetime.strptime(event_datetime_str, "%Y-%m-%d %H:%M:%S")
 
 
 #Calculate time difference
-datetime_difference = event_datetime - current_time
+#datetime_difference = event_datetime - current_time
 #print(datetime_difference)
 
-# Extract days, hours, minutes, seconds
-days = datetime_difference.days
-total_seconds = datetime_difference.total_seconds()
+# Countdown loop
+while True:
+    current_time = datetime.now()
+    time_difference = event_datetime - current_time
 
-hours = int(total_seconds // 3600) % 24
-minutes = int(total_seconds // 60) % 60
-seconds = int(total_seconds % 60)
+    if time_difference.total_seconds() <= 0:
+        print(f"{event} countdown has started!")
+        break
+    
+    # Extract days, hours, minutes, seconds
+    days = time_difference.days
+    total_seconds = time_difference.total_seconds()
 
-#Dispaly countdown
-print(f"{days} days, {hours} hours, {minutes} minutes, {seconds} seconds until {event}")
+    hours = int(total_seconds // 3600) % 24
+    minutes = int(total_seconds // 60) % 60
+    seconds = int(total_seconds % 60)
+
+    #Dispaly countdown
+    print(f"{days} days, {hours} hours, {minutes} minutes, {seconds} seconds until {event}")
+
+    time.sleep(1)
